@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    depends_on:
+      - mongo
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - MONGO_URI=mongodb+srv://nisujadhav657:bc5adVc5Btc5qfz4@hostinguser.kc0uvjw.mongodb.net/
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: nisujadhav657
+      MONGO_INITDB_ROOT_PASSWORD: bc5adVc5Btc5qfz4
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongodemo:/data/db
+  
